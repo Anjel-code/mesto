@@ -7,4 +7,12 @@
     height: 361px;
     flex-wrap: wrap;
     overflow: hidden;
+    justify-content: space-between;
+}
+
+
+@media screen and (max-width: 319px) {
+    .element {
+        min-width: 200px;
+    }
 }

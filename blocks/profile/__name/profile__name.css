@@ -5,19 +5,24 @@
     margin: 0;
     padding: 0;
     font-family: 'Inter-Medium', 'Arial', 'Helvetica', sans-serif;
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 
 @media screen and (min-width: 640px) and (max-width: 1000px) {
     .profile__name {
-        font-size: 32px;  
+        font-size: 32px;
+        max-width: 225px;
     }
 }
 
 
-@media screen and (min-width: 320px) and (max-width: 639px) {
+@media screen and (max-width: 639px) {
     .profile__name {
         font-size: 27px;
         line-height: 32px;
+        max-width: 190px;
     }
 }

@@ -3,3 +3,10 @@
     height: 282px;
     object-fit: cover;
 }
+
+
+@media screen and (max-width: 319px) {
+    .element__image {
+        max-width: 100%;
+    }
+}

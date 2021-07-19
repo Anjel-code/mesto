@@ -15,10 +15,17 @@
 }
 
 
-@media screen and (min-width: 320px) and (max-width: 639px) {
+@media screen and (max-width: 639px) {
     .elements__container {
         grid-template-columns: 1fr;
         justify-items: center;
         column-gap: 0;
+    }
+}
+
+
+@media screen and (max-width: 319px) {
+    .elements__container {
+        min-width: 200px
     }
 }
