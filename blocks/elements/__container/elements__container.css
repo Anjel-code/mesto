@@ -26,6 +26,6 @@
 
 @media screen and (max-width: 319px) {
     .elements__container {
-        min-width: 200px
+        min-width: 200px;
     }
 }
