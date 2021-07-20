@@ -1,0 +1,10 @@
+.popup__input_info_job {
+    margin-bottom: 45px;
+}
+
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+    .popup__input_info_job {
+        margin-bottom: 38px;
+    }
+}

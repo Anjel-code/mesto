@@ -8,7 +8,7 @@
     line-height: 21.78px;
     max-width: 300px;
     overflow: hidden;
-    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 
@@ -22,8 +22,10 @@
 
 @media screen and (max-width: 639px) {
     .profile__job {
+        max-width: 190px;
         font-size: 14px;
         line-height: 17px;
-        max-width: 190px;
+        grid-column: 1;
+        justify-self: center;
     }
 }

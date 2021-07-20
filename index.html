@@ -15,59 +15,59 @@
     </header>
     <main class="content">
         <section class="profile">
-            <div class="profile__edit">
-                <img class="profile__avatar" src="./images/Kusto.jpg" alt="Жак-Ив Кусто">
-                <div class="profile__info">
-                    <h1 class="profile__name">Жак-Ив Кусто</h1>
-                    <p class="profile__job">Исследователь океана</p>
-                    <button class="profile__button-edit" type="button"></button>
-                </div>
+            <img class="profile__avatar" src="./images/Kusto.jpg" alt="Жак-Ив Кусто">
+            <div class="profile__info">
+                <h1 class="profile__name">Жак-Ив Кусто</h1>
+                <p class="profile__job">Исследователь океана</p>
+                <button class="profile__button-edit" type="button"></button>
             </div>
-            <button class="profile__button-add"></button>
+            <button class="profile__button-add" type="button"></button>
         </section>
 
         <section class="elements">
             <ul class="elements__container">
                 <li class="element">
-                    <img class="element__image" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Сентинский храм">
+                    <img class="element__image" src="./images/kirill-pershin-1088404-unsplash.jpg"
+                        alt="Сентинский храм">
                     <div class="element__description">
                         <p class="element__name">Карачаевск</p>
-                        <img class="element__like" src="./images/Heart.svg" alt="Сердце">
+                        <button type="button" class="element__like"></button>
                     </div>
                 </li>
                 <li class="element">
                     <img class="element__image" src="./images/Lake-Braies.jpg" alt="Озеро Брэис">
                     <div class="element__description">
                         <p class="element__name">Озеро Брэис</p>
-                        <img class="element__like" src="./images/Heart.svg" alt="Сердце">
+                        <button type="button" class="element__like"></button>
                     </div>
                 </li>
                 <li class="element">
                     <img class="element__image" src="./images/BigFourIceCaves.jpg" alt="Большая четвёрка ледяных пещер">
                     <div class="element__description">
                         <p class="element__name">Ледяные пещеры</p>
-                        <img class="element__like" src="./images/Heart.svg" alt="Сердце">
+                        <button type="button" class="element__like"></button>
                     </div>
                 </li>
                 <li class="element">
                     <img class="element__image" src="./images/Chogha-Zanbil.jpg" alt="Пляж">
                     <div class="element__description">
                         <p class="element__name">Чога Занбил</p>
-                        <img class="element__like" src="./images/Heart.svg" alt="Сердце">
+                        <button type="button" class="element__like"></button>
                     </div>
                 </li>
                 <li class="element">
-                    <img class="element__image" src="./images/Skaftafellsjökull.jpg" alt="Ледник Скафтафетль в Белом лесу">
+                    <img class="element__image" src="./images/Skaftafellsjökull.jpg"
+                        alt="Ледник Скафтафетль в Белом лесу">
                     <div class="element__description">
                         <p class="element__name">Скафтафедель</p>
-                        <img class="element__like" src="./images/Heart.svg" alt="Сердце">
+                        <button type="button" class="element__like"></button>
                     </div>
                 </li>
                 <li class="element">
                     <img class="element__image" src="./images/Capitol-Reef.jpg" alt="Национальный парк - Кэпитол-Риф ">
                     <div class="element__description">
                         <p class="element__name">Кэпитол-Риф</p>
-                        <img class="element__like" src="./images/Heart.svg" alt="Сердце">
+                        <button type="button" class="element__like"></button>
                     </div>
                 </li>
             </ul>
@@ -78,18 +78,20 @@
         </footer>
 
         <section class="popup">
-            <form class="popup__container">
-                <img class="popup__close-icon" src="./images/Close-Icon.png" alt="Крестик">
+            <div class="popup__container">
+                <button type="button" class="popup__close-icon"></button>
                 <h2 class="popup__title">Редактировать профиль</h2>
-                <fieldset class="popup__container-input">
-                    <input type="text" class="popup__name" value = "Жак-Ив Кусто">
-                    <input type="text" class="popup__job" value = "Исследователь океана">
-                </fieldset>
-                <button class="popup__submit-button" type="submit">Сохранить</button>
-            </form>
+                <form class="popup__form">
+                    <fieldset class="popup__container-input">
+                        <input type="text" name="Имя" class="popup__input popup__input_info_name" value="Жак-Ив Кусто">
+                        <input type="text" name="Работа" class="popup__input popup__input_info_job" value="Исследователь океана">
+                    </fieldset>
+                    <button class="popup__submit-button" type="submit">Сохранить</button>
+                </form>
+            </div>
         </section>
     </main>
-    <script src="./pages/script.js"></script>
+    <script src="./scripts/script.js"></script>
 </body>
 
 </html>

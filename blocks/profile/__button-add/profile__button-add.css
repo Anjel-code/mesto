@@ -9,8 +9,8 @@
     background-position: center;
     border: 2px solid #fff;
     border-radius: 2px;
-    justify-self: flex-end;
     align-self: center;
+    margin-left: auto;
 }
 
 .profile__button-add:hover {
@@ -30,5 +30,6 @@
 @media screen and (max-width: 639px) {
     .profile__button-add {
         min-width: 100%;
+        margin: 0;
     }
 }

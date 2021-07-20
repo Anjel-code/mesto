@@ -4,10 +4,11 @@
     line-height: 48px;
     margin: 0;
     padding: 0;
-    font-family: 'Inter-Medium', 'Arial', 'Helvetica', sans-serif;
+    font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
+    font-weight: 500;
     max-width: 300px;
     overflow: hidden;
-    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 
@@ -22,7 +23,7 @@
 @media screen and (max-width: 639px) {
     .profile__name {
         font-size: 27px;
-        line-height: 32px;
+        line-height: 32.68px;
         max-width: 190px;
     }
 }
