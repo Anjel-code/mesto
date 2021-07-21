@@ -13,6 +13,7 @@
     margin-left: auto;
 }
 
+
 .profile__button-add:hover {
     opacity: .6;
     cursor: pointer;
@@ -31,5 +32,6 @@
     .profile__button-add {
         min-width: 100%;
         margin: 0;
+        background-size: 1em;
     }
 }

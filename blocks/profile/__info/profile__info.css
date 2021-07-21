@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: repeat(2, minmax(min-content, max-content));
     align-content: center;
-    gap: 16px 18px;
+    gap: 7px 24px;
     align-items: center;
 }
 

@@ -10,10 +10,21 @@
     color: #000;
 }
 
+.popup__input:first-child {
+    margin-bottom: 30px;
+}
+
+.popup__input:last-child {
+    margin-bottom: 45px;
+}
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
     .popup__input {
         min-width: 238px;
+    }
+
+    .popup__input:last-child {
+        margin-bottom: 38px;
     }
 }
 
