@@ -25,52 +25,7 @@
         </section>
 
         <section class="elements">
-            <ul class="elements__container">
-                <li class="element">
-                    <img class="element__image" src="./images/kirill-pershin-1088404-unsplash.jpg"
-                        alt="Сентинский храм">
-                    <div class="element__description">
-                        <p class="element__name">Карачаевск</p>
-                        <button type="button" class="element__like"></button>
-                    </div>
-                </li>
-                <li class="element">
-                    <img class="element__image" src="./images/Lake-Braies.jpg" alt="Озеро Брэис">
-                    <div class="element__description">
-                        <p class="element__name">Озеро Брэис</p>
-                        <button type="button" class="element__like"></button>
-                    </div>
-                </li>
-                <li class="element">
-                    <img class="element__image" src="./images/BigFourIceCaves.jpg" alt="Большая четвёрка ледяных пещер">
-                    <div class="element__description">
-                        <p class="element__name">Ледяные пещеры</p>
-                        <button type="button" class="element__like"></button>
-                    </div>
-                </li>
-                <li class="element">
-                    <img class="element__image" src="./images/Chogha-Zanbil.jpg" alt="Пляж">
-                    <div class="element__description">
-                        <p class="element__name">Чога Занбил</p>
-                        <button type="button" class="element__like"></button>
-                    </div>
-                </li>
-                <li class="element">
-                    <img class="element__image" src="./images/Skaftafellsjökull.jpg"
-                        alt="Ледник Скафтафетль в Белом лесу">
-                    <div class="element__description">
-                        <p class="element__name">Скафтафедель</p>
-                        <button type="button" class="element__like"></button>
-                    </div>
-                </li>
-                <li class="element">
-                    <img class="element__image" src="./images/Capitol-Reef.jpg" alt="Национальный парк - Кэпитол-Риф ">
-                    <div class="element__description">
-                        <p class="element__name">Кэпитол-Риф</p>
-                        <button type="button" class="element__like"></button>
-                    </div>
-                </li>
-            </ul>
+            <ul class="elements__container"></ul>
         </section>
 
         <footer class="footer">
@@ -83,14 +38,25 @@
                 <h2 class="popup__title">Редактировать профиль</h2>
                 <form class="popup__form" name="Попап-форма">
                     <fieldset class="popup__container-input">
-                        <input type="text" name="Имя" class="popup__input popup__input_info_name" value="Жак-Ив Кусто">
-                        <input type="text" name="Работа" class="popup__input popup__input_info_job" value="Исследователь океана">
+                        <input type="text" name="Имя" autocomplete="off" class="popup__input popup__input_info_name" value="Жак-Ив Кусто">
+                        <input type="text" name="Работа" autocomplete="off" class="popup__input popup__input_info_job" value="Исследователь океана">
                     </fieldset>
                     <button class="popup__submit-button" type="submit">Сохранить</button>
                 </form>
             </div>
         </section>
     </main>
+
+    <template id="card">
+        <li class="element">
+            <img class="element__image">
+            <div class="element__description">
+                <p class="element__name"></p>
+                <button type="button" class="element__like"></button>
+            </div>
+        </li>
+    </template>
+
     <script src="./scripts/script.js"></script>
 </body>
 
