@@ -5,12 +5,13 @@
     background-image: url(../../../images/Close-Icon.png);
     background-repeat: no-repeat;
     background-size: contain;
-    background-color: #000;
+    background-color: transparent;
     cursor: pointer;
     align-self: flex-end;
     margin: -40px -40px 0 0;
     padding: 0;
     border: none;
+    z-index: 1000;
 }
 
 

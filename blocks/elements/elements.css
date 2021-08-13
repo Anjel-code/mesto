@@ -14,8 +14,13 @@
 
 @media screen and (max-width: 639px) {
     .elements {
-        max-width: 320px;
         padding-top: 36px;
+    }
+}
+
+@media screen and (max-width: 639px) {
+    .elements {
+        max-width: 282px;
     }
 }
 

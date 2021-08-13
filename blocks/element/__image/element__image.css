@@ -2,10 +2,11 @@
     max-width: 282px;
     height: 282px;
     object-fit: cover;
+    cursor: pointer;
 }
 
 
-@media screen and (max-width: 319px) {
+@media screen and (max-width: 330px) {
     .element__image {
         max-width: 100%;
     }

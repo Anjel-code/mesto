@@ -5,6 +5,7 @@
     list-style-type: none;
     padding: 0;
     margin: 0;
+    justify-items: center;
 }
 
 
@@ -18,11 +19,16 @@
 @media screen and (max-width: 639px) {
     .elements__container {
         grid-template-columns: 1fr;
-        justify-items: center;
         column-gap: 0;
     }
 }
-
+   
+@media screen and (max-width: 340px) {
+    .elements__container {
+        max-width: 282px;
+        margin: 0;
+    }
+}
 
 @media screen and (max-width: 319px) {
     .elements__container {
