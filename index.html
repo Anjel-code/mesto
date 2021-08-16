@@ -36,6 +36,7 @@
             <div class="popup__image_container">
             <button type="button" class="popup__close-icon image-close"></button>
             <img src="" alt="Картинка" class="popup__image_element">
+            <h2 class="popup__image_title"></h2>
         </div></section>
 
         <section class="popup popup__edit">
@@ -61,7 +62,7 @@
                 <form class="popup__form popup__form-add" name="Попап-форма">
                     <fieldset class="popup__container-input">
                         <input type="text" name="Название" autocomplete="off" class="popup__input popup__input_add_title">
-                        <input type="text" name="Работа" autocomplete="off" class="popup__input popup__input_add_link">
+                        <input type="text" name="Ссылка" autocomplete="off" class="popup__input popup__input_add_link">
                     </fieldset>
                     <button class="popup__submit-button" type="submit">Создать</button>
                 </form>
@@ -73,9 +74,9 @@
     <template id="card">
         <li class="element">
             <button type="button" class="element__delete-button"></button>
-            <button class="element__image-click"><img class="element__image" alt="Картинка"></button>
+            <button class="element__image-click"><img name = 'link' class="element__image" alt="Картинка"></button>
             <div class="element__description">
-                <p class="element__name"></p>
+                <p name = 'name' class="element__name"></p>
                 <button type="button" class="element__like"></button>
             </div>
         </li>
