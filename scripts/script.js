@@ -73,17 +73,6 @@ const initialCards = [
    return cardElement
 }
 
-function openPopupInitialImage(name, link) {
-  imagePopupElementTitle.textContent = name;
-  imagePopupElementImage.src = link;
-  imagePopup.classList.add('popup_opened');
- }
-
-initialCards.forEach(card => {
-  const elementCard = createCard(card); // потому что card это {name, link}
-  elementContainer.append(elementCard);
-});
-
 function openPopup(popup) {
   popup.classList.add('popup_opened');
 }
@@ -91,6 +80,17 @@ function openPopup(popup) {
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
+
+function openPopupInitialImage(name, link) {
+  imagePopupElementTitle.textContent = name;
+  imagePopupElementImage.src = link;
+  openPopup(imagePopup);
+ }
+
+initialCards.forEach(card => {
+  const elementCard = createCard(card); // потому что card это {name, link}
+  elementContainer.append(elementCard);
+});
 
 function sumbitFormEditProfile (evt) {
   evt.preventDefault();
@@ -100,14 +100,10 @@ function sumbitFormEditProfile (evt) {
   closePopup(popupEditProfile);
 }
 
-function closeImage() {
-  imagePopup.classList.remove('popup_opened');
-}
-
 function openPopupImage() {
   imagePopupElementTitle.textContent = cardElement.querySelector('.element__name').textContent;
   imagePopupElementImage.src = cardElement.querySelector('.element__image').src;
-  imagePopup.classList.add('popup_opened');
+  openPopup(imagePopup);
  }
 
  function handleFormAddCard(evt) {
@@ -131,4 +127,4 @@ popupEditFormClose.addEventListener('click', () => closePopup(popupEditProfile))
 popupAddFormClose.addEventListener('click', () => closePopup(popupAddCard));
 formEditElement.addEventListener('submit', sumbitFormEditProfile);
 formAddElement.addEventListener('submit', handleFormAddCard);
-popupImageCloseButton.addEventListener('click', closeImage);
+popupImageCloseButton.addEventListener('click', () => closePopup(imagePopup));
