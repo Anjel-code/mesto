@@ -8,18 +8,8 @@
     font-size: 14px;
     line-height: 17px;
     color: #000;
+    margin: 0 0 5px 0;
 }
-
-
-.popup__input:first-child {
-    margin-bottom: 30px;
-}
-
-
-.popup__input:last-child {
-    margin-bottom: 45px;
-}
-
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
     .popup__input {
