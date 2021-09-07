@@ -76,19 +76,20 @@
 
     </main>
 
-    <template id="card">
+    <template id="card" class="card-default">
         <li class="element">
             <button type="button" class="element__delete-button"></button>
             <button class="element__image-click"><img name = 'link' class="element__image" alt="Картинка"></button>
             <div class="element__description">
-                <p name = 'name' class="element__name"></p>
+                <p name='name' class="element__name"></p>
                 <button type="button" class="element__like"></button>
             </div>
         </li>
     </template>
 
-    <script src="./scripts/script.js"></script>
-    <script src="./scripts/validate.js"></script>
+    <script type="module" src="./scripts/index.js"></script>
+    <script type="module" src="./scripts/FormValidator.js"></script>
+    <script type="module" src="./scripts/Card.js"></script>
 </body>
 
 </html>
