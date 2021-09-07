@@ -1,6 +1,18 @@
 import { Card } from "./Card.js"
 import { FormValidator } from "./FormValidator.js";
 
+const obj  = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible'
+}
+
+const popupAddForm = document.querySelector('.popup__form-add');
+const popupEditForm = document.querySelector('.popup__form-edit');
+const validateForm = [popupAddForm, popupEditForm];
 const popupEditProfile = document.querySelector('.popup__edit');
 const popupAddCard = document.querySelector('.popup__add');
 const formEditElement = popupEditProfile.querySelector('.popup__form');
@@ -12,7 +24,6 @@ const popupEditFormJobInput = popupEditProfile.querySelector('.popup__input_info
 const profileName = document.querySelector('.profile__name');
 const profileJob = document.querySelector('.profile__job');
 const popups = document.querySelectorAll('.popup')
-const popupAddForm = document.querySelector('.popup__form-add');
 const buttonElement = popupAddForm.querySelector('.popup__button');
 
 function closeByEscape(evt) {
@@ -70,6 +81,11 @@ function handleFormAddCard(evt) {
   disableButton();
   closePopup(popupAddCard);
 }
+
+validateForm.forEach(element => {
+  const validateElement = new FormValidator(obj, element);
+  validateElement.enableValidation()
+});
 
 profileEditButton.addEventListener('click', () => openPopup(popupEditProfile));
 cardAddButton.addEventListener('click', () => openPopup(popupAddCard));

@@ -1,18 +1,4 @@
-const obj  = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'popup__button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
-}
-
-const popupAddForm = document.querySelector('.popup__form-add');
-const popupEditForm = document.querySelector('.popup__form-edit');
-
-const validateForm = [popupAddForm, popupEditForm];
-
-class FormValidator {
+export class FormValidator {
   constructor(data, formElement) {
     this._formSelector = data.formSelector;
     this._inputSelector = data.inputSelector;
@@ -83,8 +69,3 @@ class FormValidator {
     this._setInputListeners();
   }
 }
-
-validateForm.forEach(element => {
-    const validateElement = new FormValidator(obj, element);
-    validateElement.enableValidation()
-});
