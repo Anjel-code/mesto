@@ -32,41 +32,46 @@
             <p class="footer__copyright">© 2020 Mesto Russia</p>
         </footer>
 
-        <section class="popup popup__image" id="popup__image">  
-            <div class="popup__overlay popup__image-overlay"></div>          
-            <div class="popup__image_container">
-            <button type="button" class="popup__close-icon image-close"></button>
-            <img src="#" alt="Картинка" class="popup__image_element">
-            <h2 class="popup__image_title"></h2>
-        </div></section>
+        <section class="popup popup-image" id="popup__image">
+            <div class="popup__overlay popup-image__overlay"></div>
+            <div class="popup-image__container">
+                <button type="button" class="popup-image__close-icon popup__close-icon image-close"></button>
+                <img src="#" alt="Картинка" class=" ">
+                <h2 class="popup-image__title"></h2>
+            </div>
+        </section>
 
-        <section class="popup popup__edit" id="popup__edit">
-            <div class="popup__overlay popup__edit-overlay"></div>
+        <section class="popup popup-edit" id="popup-edit">
+            <div class="popup__overlay popup-edit__overlay"></div>
             <div class="popup__container popup__container_profile_edit">
                 <button type="button" class="popup__close-icon edit-close"></button>
                 <h2 class="popup__title">Редактировать профиль</h2>
                 <form class="popup__form popup__form-edit" name="Попап-форма" novalidate>
                     <fieldset class="popup__container-input">
-                        <input type="text" name="Имя" id="popup__name" minlength="2" maxlength="40" required autocomplete="off" class="popup__input popup__input_info_name"
-                            value="Жак-Ив Кусто" placeholder="имя"><span class="popup__name-error popup__error_message"></span>
-                        <input type="text" name="Работа" id="popup__job" minlength="2" maxlength="200" required autocomplete="off" class="popup__input popup__input_info_job"
-                            value="Исследователь океана" placeholder="О себе"><span class="popup__job-error popup__error_message"></span>
+                        <input type="text" name="Имя" id="popup__name" minlength="2" maxlength="40" required
+                            autocomplete="off" class="popup__input popup__input_info_name" value="Жак-Ив Кусто"
+                            placeholder="имя"><span class="popup__name-error popup__error_message"></span>
+                        <input type="text" name="Работа" id="popup__job" minlength="2" maxlength="200" required
+                            autocomplete="off" class="popup__input popup__input_info_job" value="Исследователь океана"
+                            placeholder="О себе"><span class="popup__job-error popup__error_message"></span>
                     </fieldset>
                     <button class="popup__submit-button popup__button" type="submit">Сохранить</button>
                 </form>
             </div>
         </section>
 
-        <section class="popup popup__add" id="popup__add">
-            <div class="popup__overlay popup__add-overlay"></div>
+        <section class="popup popup-add" id="popup-add">
+            <div class="popup__overlay popup-add__overlay"></div>
             <div class="popup__container popup__container_item_add">
                 <button type="button" class="popup__close-icon add-close"></button>
                 <h2 class="popup__title">Новое место</h2>
                 <form class="popup__form popup__form-add" name="Попап-форма">
                     <fieldset class="popup__container-input">
-                        <input type="text" name="Название" id="popup__title" minlength="2" maxlength="30" required autocomplete="off" placeholder ="Название" class="popup__input popup__input_add_title">
+                        <input type="text" name="Название" id="popup__title" minlength="2" maxlength="30" required
+                            autocomplete="off" placeholder="Название" class="popup__input popup__input_add_title">
                         <span class="popup__title-error popup__error_message"></span>
-                        <input type="url" name="Ссылка" id="popup__link" autocomplete="off" required placeholder ="Ссылка на картинку" class="popup__input popup__input_add_link">
+                        <input type="url" name="Ссылка" id="popup__link" autocomplete="off" required
+                            placeholder="Ссылка на картинку" class="popup__input popup__input_add_link">
                         <span class="popup__link-error popup__error_message"></span>
                     </fieldset>
                     <button class="popup__submit-button popup__button" type="submit">Создать</button>
@@ -79,7 +84,7 @@
     <template id="card" class="card-default">
         <li class="element">
             <button type="button" class="element__delete-button"></button>
-            <button class="element__image-click"><img name = 'link' class="element__image" alt="Картинка"></button>
+            <button class="element__image-click"><img name='link' class="element__image" alt="Картинка"></button>
             <div class="element__description">
                 <p name='name' class="element__name"></p>
                 <button type="button" class="element__like"></button>

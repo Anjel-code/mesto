@@ -26,7 +26,7 @@ const initialCards = [
 ];
 
 const imagePopup = document.querySelector('.popup__image');
-const imagePopupElementTitle = document.querySelector('.popup__image_title');
+const imagePopupElementTitle = document.querySelector('.popup-image__title');
 const imagePopupElementImage = document.querySelector('.popup__image_element');
 
 export class Card {
