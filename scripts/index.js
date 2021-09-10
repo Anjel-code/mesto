@@ -1,7 +1,7 @@
 import { Card } from "./Card.js"
 import { FormValidator } from "./FormValidator.js";
 
-const obj  = {
+const obj = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__button',
@@ -12,28 +12,28 @@ const obj  = {
 
 const initialCards = [
   {
-      name: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
   },
   {
-      name: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
   },
   {
-      name: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
   },
   {
-      name: 'Камчатка',
-      link: 'https://images.unsplash.com/photo-1535557142533-b5e1cc6e2a5d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=801&q=80'
+    name: 'Камчатка',
+    link: 'https://images.unsplash.com/photo-1535557142533-b5e1cc6e2a5d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=801&q=80'
   },
   {
-      name: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
   },
   {
-      name: 'Байкал',
-      link: 'https://images.unsplash.com/photo-1587053362230-eb9a377641ca?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=749&q=80'
+    name: 'Байкал',
+    link: 'https://images.unsplash.com/photo-1587053362230-eb9a377641ca?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=749&q=80'
   }
 ];
 
@@ -51,7 +51,6 @@ const popupEditFormJobInput = popupEditProfile.querySelector('.popup__input_info
 const profileName = document.querySelector('.profile__name');
 const profileJob = document.querySelector('.profile__job');
 const popups = document.querySelectorAll('.popup')
-const buttonElement = popupAddForm.querySelector('.popup__button');
 
 function createCard(item) {
   const card = new Card(item, '.card-default');
@@ -70,19 +69,29 @@ function closeByEscape(evt) {
   }
 }
 
+function validate(formElement) {
+  const validateElement = new FormValidator(obj, formElement);
+  validateElement.resetValidation()
+  validateElement.enableValidation()
+}
+
 export function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closeByEscape);
+  const popupForm = popup.querySelector('.popup__form');
+  if (popup.contains(popupForm)) {
+    validate(popupForm);
+  };
 }
 
 popups.forEach((popup) => {
   popup.addEventListener('click', (evt) => {
-      if (evt.target.classList.contains('popup__overlay')) {
-          closePopup(popup);
-      }
-      if (evt.target.classList.contains('popup__close-icon')) {
-           closePopup(popup);
-      }
+    if (evt.target.classList.contains('popup__overlay')) {
+      closePopup(popup);
+    }
+    if (evt.target.classList.contains('popup__close-icon')) {
+      closePopup(popup);
+    }
   })
 })
 
@@ -100,30 +109,16 @@ function sumbitFormEditProfile(evt) {
   closePopup(popupEditProfile);
 }
 
-function disableButton() {
-  buttonElement.setAttribute("disabled", true);
-  buttonElement.classList.add('popup__button_disabled');
-}
-
 function handleFormAddCard(evt) {
   evt.preventDefault();
   const cardData = {
-  name: evt.target.querySelector('.popup__input_add_title').value,
-  link: evt.target.querySelector('.popup__input_add_link').value
+    name: evt.target.querySelector('.popup__input_add_title').value,
+    link: evt.target.querySelector('.popup__input_add_link').value
   };
   cardContainer.prepend(createCard(cardData));
   popupAddForm.reset();
-  disableButton();
   closePopup(popupAddCard);
 }
-
-function validate(formElement) {
-  const validateElement = new FormValidator(obj, formElement); 
-  validateElement.enableValidation() 
-}
-
-validate(popupAddForm);
-validate(popupEditForm);
 
 profileEditButton.addEventListener('click', () => openPopup(popupEditProfile));
 cardAddButton.addEventListener('click', () => openPopup(popupAddCard));
