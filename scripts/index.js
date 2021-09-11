@@ -71,18 +71,12 @@ function closeByEscape(evt) {
 
 const cardFormValidate = new FormValidator(obj, popupAddForm);
 const profileFormValidate = new FormValidator(obj, popupEditForm);
+cardFormValidate.enableValidation();
+profileFormValidate.enableValidation();
 
 export function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closeByEscape);
-  
-  if (popup.contains(popupAddForm)) {
-    cardFormValidate.enableValidation();
-  }
-  else if(popup.contains(popupEditForm)) {
-    profileFormValidate.resetValidation();
-    profileFormValidate.enableValidation();
-  };
 }
 
 popups.forEach((popup) => {
