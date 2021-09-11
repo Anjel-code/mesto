@@ -69,18 +69,19 @@ function closeByEscape(evt) {
   }
 }
 
-function validate(formElement) {
-  const validateElement = new FormValidator(obj, formElement);
-  validateElement.resetValidation()
-  validateElement.enableValidation()
-}
+const cardFormValidate = new FormValidator(obj, popupAddForm);
+const profileFormValidate = new FormValidator(obj, popupEditForm);
 
 export function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closeByEscape);
-  const popupForm = popup.querySelector('.popup__form');
-  if (popup.contains(popupForm)) {
-    validate(popupForm);
+  
+  if (popup.contains(popupAddForm)) {
+    cardFormValidate.enableValidation();
+  }
+  else if(popup.contains(popupEditForm)) {
+    profileFormValidate.resetValidation();
+    profileFormValidate.enableValidation();
   };
 }
 
@@ -117,6 +118,7 @@ function handleFormAddCard(evt) {
   };
   cardContainer.prepend(createCard(cardData));
   popupAddForm.reset();
+  cardFormValidate.resetValidation();
   closePopup(popupAddCard);
 }
 
