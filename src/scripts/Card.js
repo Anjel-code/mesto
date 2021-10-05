@@ -1,21 +1,16 @@
-import { openPopup } from "./index.js";
-
-const imagePopup = document.querySelector('.popup-image');
-const imagePopupElementTitle = document.querySelector('.popup-image__title');
-const imagePopupElementImage = document.querySelector('.popup-image__element');
-
 export class Card {
 
-    constructor(data, cardSelector) {
-        this._description = data.name;
-        this._link = data.link;
+    constructor(data, cardSelector, handleCardClick) {
+        this.name = data.name;
+        this.link = data.link;
         this._cardSelector = cardSelector;
-        this._openPopup = openPopup;
+        this._handleCardClick = handleCardClick;
     }
 
 
     _getCardData() {
         const cardElement = document.querySelector(this._cardSelector).content.querySelector('.element').cloneNode(true);
+        this._photo = cardElement.querySelector(".element__image-click");
         this._like = cardElement.querySelector('.element__like')
         this._image = cardElement.querySelector('.element__image');
         this._removeButton = cardElement.querySelector('.element__delete-button');
@@ -27,18 +22,12 @@ export class Card {
     createCard() {
         this._card = this._getCardData();
         this._setEventListeners();
-
-        this._image.src = this._link;
-        this._image.alt = this._description;
-        this._elementName.textContent = this._description;
+        
+        this._image.src = this.link;
+        this._image.alt = this.name;
+        this._elementName.textContent = this.name;
 
         return this._card;
-    }
-
-    _openPopupImage() {
-        this._openPopup(imagePopup);
-        imagePopupElementTitle.textContent = this._description;
-        imagePopupElementImage.src = this._link;
     }
 
     _handleLikeCard() {
@@ -58,8 +47,8 @@ export class Card {
             this._deletePopupCardForm();
         });
 
-        this._image.addEventListener('click', () => {
-            this._openPopupImage()
+        this._photo.addEventListener("click", () => {
+            this._handleCardClick(this)
         });
     }
 

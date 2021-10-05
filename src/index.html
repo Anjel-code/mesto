@@ -5,17 +5,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./pages/index.css">
     <title>Mesto</title>
 </head>
 
 <body class="page">
     <header class="header">
-        <img class="header__logo" src="./images/logo/Mesto-logo.svg" alt="Логотип - Место">
+        <img class="header__logo" src="<%=require('../images/logo/Mesto-logo.svg')%>" alt="Логотип - Место">
     </header>
     <main class="content">
         <section class="profile">
-            <img class="profile__avatar" src="./images/Kusto.jpg" alt="Жак-Ив Кусто">
+            <img class="profile__avatar" src="<%=require('../images/Kusto.jpg')%>" alt="Жак-Ив Кусто">
             <div class="profile__info">
                 <h1 class="profile__name">Жак-Ив Кусто</h1>
                 <p class="profile__job">Исследователь океана</p>
@@ -48,10 +47,10 @@
                 <h2 class="popup__title">Редактировать профиль</h2>
                 <form class="popup__form popup__form-edit" name="Попап-форма" novalidate>
                     <fieldset class="popup__container-input">
-                        <input type="text" name="Имя" id="popup__name" minlength="2" maxlength="40" required
+                        <input type="text" name="name" id="popup__name" minlength="2" maxlength="40" required
                             autocomplete="off" class="popup__input popup__input_info_name" value="Жак-Ив Кусто"
                             placeholder="имя"><span class="popup__name-error popup__error-message"></span>
-                        <input type="text" name="Работа" id="popup__job" minlength="2" maxlength="200" required
+                        <input type="text" name="job" id="popup__job" minlength="2" maxlength="200" required
                             autocomplete="off" class="popup__input popup__input_info_job" value="Исследователь океана"
                             placeholder="О себе"><span class="popup__job-error popup__error-message"></span>
                     </fieldset>
@@ -67,10 +66,10 @@
                 <h2 class="popup__title">Новое место</h2>
                 <form class="popup__form popup__form-add" name="Попап-форма">
                     <fieldset class="popup__container-input">
-                        <input type="text" name="Название" id="popup__title" minlength="2" maxlength="30" required
+                        <input type="text" name="name" id="popup__title" minlength="2" maxlength="30" required
                             autocomplete="off" placeholder="Название" class="popup__input popup__input_add_title">
                         <span class="popup__title-error popup__error-message"></span>
-                        <input type="url" name="Ссылка" id="popup__link" autocomplete="off" required
+                        <input type="url" name="link" id="popup__link" autocomplete="off" required
                             placeholder="Ссылка на картинку" class="popup__input popup__input_add_link">
                         <span class="popup__link-error popup__error-message"></span>
                     </fieldset>
@@ -91,10 +90,6 @@
             </div>
         </li>
     </template>
-
-    <script type="module" src="./scripts/index.js"></script>
-    <script type="module" src="./scripts/FormValidator.js"></script>
-    <script type="module" src="./scripts/Card.js"></script>
 </body>
 
 </html>
