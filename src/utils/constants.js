@@ -1,11 +1,3 @@
-import { FormValidator } from "../components/FormValidator";
-import { Section } from "../components/Section.js"
-import { PopupWithImage } from "../components/PopupWithImage.js";
-import { PopupWithForm } from "../components/PopupWithForm.js";
-import { UserInfo } from "../components/UserInfo.js";
-import { createCard } from "../pages/index.js";
-
-
 const obj = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
@@ -50,48 +42,14 @@ const editFormOpenButton = document.querySelector('.profile__button-edit');
 const profileInputName = document.querySelector(".popup__input_info_name");
 const profileInputJob = document.querySelector(".popup__input_info_job");
 
-const popupShowCard = new PopupWithImage(".popup-image");
-
-const cardFormValidate = new FormValidator(obj, popupAddForm);
-const profileFormValidate = new FormValidator(obj, popupEditForm);
-
 
 const profileSelectors = {
   profileName: ".profile__name",
   profileJob: ".profile__job"
 };
 
-const initialCardsList = new Section({
-  items: initialCards,
-  renderer: (item) => {
-    initialCardsList.setItem(createCard(item));
-  }
-}, cardContainer);
-
-
-const handleFormEditProfile = (inputValues) => {
-
-  profileEdit.setUserInfo(inputValues);
-
-}
-
-const handleFormAddCard = (inputValues) => {
-  const inputs = [inputValues];
-  inputs.forEach((item) => {
-    initialCardsList.setItem(createCard(item));
-  });
-
-  cardFormValidate.resetValidation();
-}
-
-const profileEdit = new UserInfo(profileSelectors);
-
-
-const popupAddCard = new PopupWithForm(".popup-add", handleFormAddCard)
-const popupEditProfile = new PopupWithForm(".popup-edit", handleFormEditProfile);
-
 
 export {
-  obj, initialCards, cardContainer, popupAddForm, initialCardsList, handleFormEditProfile, handleFormAddCard, popupEditForm, cardFormOpenButton, editFormOpenButton, profileInputName, profileInputJob,
-  popupShowCard, cardFormValidate, profileFormValidate, profileEdit, popupAddCard, popupEditProfile
+  obj, initialCards, cardContainer, popupAddForm, popupEditForm, cardFormOpenButton, 
+  editFormOpenButton, profileInputName, profileInputJob, profileSelectors
 }
