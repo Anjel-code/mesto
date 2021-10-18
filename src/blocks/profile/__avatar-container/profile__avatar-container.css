@@ -1,0 +1,22 @@
+.profile__avatar-container {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-image: url(../../../images/Avatar-set.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.profile__avatar-container:hover .profile__avatar-overlay {
+    background: rgba(0, 0, 0, 0.8);
+    cursor: pointer;
+  }
+  
+  
+  .profile__avatar-container:hover .profile__avatar-button {
+    opacity: 1;
+    visibility: visible;
+    cursor: pointer;
+  }
