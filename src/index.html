@@ -19,7 +19,6 @@
                 <img class="profile__avatar" src="<%=require('./images/Kusto.jpg')%>" alt="Жак-Ив Кусто">
                 <button type="button" class="profile__avatar-button"></button>
             </div>
-            </div>
 
             <div class="profile__info">
                 <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -72,9 +71,9 @@
                 <h2 class="popup__title">Обновить аватар</h2>
                 <form class="popup__form popup__form-avatar" name="Попап-форма" novalidate>
                     <fieldset class="popup__container-input">
-                        <input type="url" name="link" id="popup__link" autocomplete="off" required
+                        <input type="url" name="link" id="popup__avatar-link" autocomplete="off" required
                             placeholder="Ссылка на аватар" class="popup__input popup__input_add_link">
-                        <span class="popup__link-error popup__error-message"></span>
+                        <span class="popup__avatar-link-error popup__error-message"></span>
                     </fieldset>
                     <button class="popup__submit-button popup__button" type="submit">Сохранить</button>
                 </form>
