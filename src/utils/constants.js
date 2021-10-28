@@ -19,16 +19,16 @@ const popupAddFormButton = popupAddForm.querySelector('.popup__submit-button');
 const popupAvatarFormButton = popupAvatarForm.querySelector('.popup__submit-button');
 const profileInputName = document.querySelector(".popup__input_info_name");
 const profileInputJob = document.querySelector(".popup__input_info_job");
-const profileAvatar = document.querySelector('.profile__avatar');
 
 
 const profileSelectors = {
   profileName: ".profile__name",
-  profileJob: ".profile__job"
+  profileJob: ".profile__job",
+  profileAvatar: '.profile__avatar'
 };
 
 
 export {
   obj, cardContainer, popupAddForm, popupEditForm, popupAvatarForm, popupEditFormButton, popupAvatarFormButton, popupAddFormButton, cardFormOpenButton, avatarFormOpenButton,
-  editFormOpenButton, profileInputName, profileInputJob, profileAvatar, profileSelectors
+  editFormOpenButton, profileInputName, profileInputJob, profileSelectors
 }

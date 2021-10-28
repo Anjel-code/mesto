@@ -9,7 +9,7 @@ import { Api } from "../components/Api.js";
 import './index.css';
 import {
   obj, popupAddForm, popupEditForm, popupAvatarForm, popupEditFormButton, popupAvatarFormButton, cardContainer, cardFormOpenButton, editFormOpenButton, popupAddFormButton, avatarFormOpenButton,
-  profileInputName, profileInputJob, profileAvatar, profileSelectors
+  profileInputName, profileInputJob, profileSelectors
 } from "../utils/constants.js"
 import { PopupWithConfirmation } from "../components/PopupWithConfirmation.js";
 
@@ -21,28 +21,35 @@ const api = new Api({
 });
 
 const initialCardsList = new Section({
-
-  items: [],
-
-  renderer: (item) => {
-
+  
+renderer: (item, userData) => {
     initialCardsList.setItem(createCard({
       name: item.name,
       link: item.link,
-      likes: item.likes.length,
+      likesCounter: item.likes.length,
+      likes: item.likes,
+      handleDeleteClick: handleDeleteClick,
       handleLikeCard: handleLikeToogle,
+      owner: false,
+      ownerId: userData,
+      cardOwnerId: item.owner._id,
       _id: item._id
     }));
-
   }
 
 }, cardContainer);
 
 
-api.getInitialCards()
-  .then(result => {
-    const cards = result
-    initialCardsList.renderItems(cards)
+Promise.all([api.getUserInfo(), api.getInitialCards()])
+  .then(([userData, cardsData]) => {
+
+    profileEdit.setUserAvatar(userData.avatar);
+    profileEdit.setUserInfo({
+      name: userData.name,
+      job: userData.about
+    });
+
+    initialCardsList.renderItems(cardsData, userData);
   })
   .catch((err) => {
     console.log(err);
@@ -75,22 +82,22 @@ function createCard(item) {
 
 const submitDeleteCard = (card, cardId) => {
   api.deleteCard(cardId)
+    .then(() => {
+      card.removeCard();
+      popupDeleteCard.close();
+    })
     .catch((err) => {
       console.log(err);
     });
-  card.remove();
-  popupDeleteCard.close();
 }
 
 const handleOpenAvatarPopup = (inputValues) => {
   popupAvatarFormButton.textContent = 'Сохранение...';
 
   api.setAvatar(inputValues.link)
-    .then(data => {
-      profileEdit.setUserInfo({
-        name: data.name,
-        job: data.about
-      });
+    .then(() => {
+      profileEdit.setUserAvatar(inputValues.link);
+      popupSetAvatar.close();
     })
     .catch((err) => {
       console.log(err);
@@ -98,33 +105,31 @@ const handleOpenAvatarPopup = (inputValues) => {
     .finally(() => {
       popupAvatarFormButton.textContent = 'Сохранить'
     });
-  profileAvatar.src = inputValues.link;
 }
 
 const handleDeleteClick = (card, cardId) => {
   popupDeleteCard.open(card, cardId);
 };
 
-const handleLikeToogle = (id, card) => {
-  const like = card.querySelector('.element__like');
-  const likeCounter = card.querySelector('.element__like-counter');
+const handleLikeToogle = (id, cardElm, card) => {
+  const like = cardElm.querySelector('.element__like');
+  let isLiked = true;
 
 
   if (like.classList.contains('element__liked')) {
-    like.classList.remove("element__liked");
     api.removeLike(id)
       .then(result => {
-        likeCounter.textContent = result.likes.length;
+        card.setLike(result.likes.length, isLiked);
       })
       .catch((err) => {
         console.log(err);
       });
   }
   else {
-    like.classList.add("element__liked");
+    isLiked = false;
     api.addLike(id)
       .then(result => {
-        likeCounter.textContent = result.likes.length;
+        card.setLike(result.likes.length, isLiked);
       })
       .catch((err) => {
         console.log(err);
@@ -145,6 +150,7 @@ const handleFormEditProfile = (inputValues) => {
         name: data.name,
         job: data.about
       });
+      popupEditProfile.close();
     })
     .catch((err) => {
       console.log(err);
@@ -157,22 +163,23 @@ const handleFormEditProfile = (inputValues) => {
 const handleFormAddCard = (inputValues) => {
   popupAddFormButton.textContent = 'Создание...'
 
-  api.addCard({
-    name: inputValues.name,
-    link: inputValues.link
-  })
-    .then(data => {
+
+  Promise.all([api.getUserInfo(), api.addCard({ name: inputValues.name, link: inputValues.link })])
+    .then(([userData, cardData]) => {
 
       initialCardsList.setItem(createCard({
-        name: data.name,
-        link: data.link,
-        likes: data.likes.length,
+        name: cardData.name,
+        link: cardData.link,
+        likesCounter: cardData.likes.length,
+        likes: cardData.likes,
         handleDeleteClick: handleDeleteClick,
         handleLikeCard: handleLikeToogle,
         owner: true,
-        _id: data._id
+        ownerId: userData,
+        _id: cardData._id
       })
       )
+      popupAddCard.close()
     })
     .catch((err) => {
       console.log(err);

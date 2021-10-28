@@ -3,12 +3,15 @@ export class Card {
     constructor(data, cardSelector, handleCardClick) {
         this.name = data.name;
         this.link = data.link;
-        this.countLikes = data.likes;
+        this.countLikes = data.likesCounter;
+        this._likes = data.likes;
         this._handleLikeCard = data.handleLikeCard;
         this._cardSelector = cardSelector;
         this._handleCardClick = handleCardClick;
         this._handleDeleteClick = data.handleDeleteClick;
         this._isOwner = data.owner
+        this._cardOwnerId = data.cardOwnerId;
+        this._ownerId = data.ownerId._id;
         this._Id = data._id;
     }
 
@@ -26,7 +29,24 @@ export class Card {
 
     createCard() {
         this._card = this._getCardData();
-        this._setEventListeners();
+
+        if (this._cardOwnerId === this._ownerId) {
+            this._isOwner = true;
+            this._setEventListeners();
+        }
+        else {
+            this._isOwner = false;
+            this._setEventListeners();
+        }
+
+        for (let i = 0; i < this._likes.length; i++) {
+            if (this._ownerId === this._likes[i]._id) {
+
+                this._like.classList.add("element__liked");
+
+            }
+        }
+
 
         this._card.querySelector(".element__like-counter").textContent = this.countLikes;
         this._image.src = this.link;
@@ -37,7 +57,8 @@ export class Card {
     }
 
     _setEventListeners() {
-        this._like.addEventListener('click', () => this._handleLikeCard(this._Id, this._card));
+
+        this._like.addEventListener('click', () => this._handleLikeCard(this._Id, this._card, this));
 
         this._removeButton.addEventListener('click', () => {
             this._handleDeleteClick();
@@ -50,8 +71,23 @@ export class Card {
         if (this._isOwner) {
             this._buttonDelete = this._card.querySelector(".element__delete-button");
             this._buttonDelete.classList.add("element__delete-button_active");
-            this._buttonDelete.addEventListener("click", () => {this._handleDeleteClick(this._card, this._Id)});
+            this._buttonDelete.addEventListener("click", () => { this._handleDeleteClick(this, this._Id) });
         }
+    }
+
+    setLike(cardLikes, isLiked) {
+        this._card.querySelector(".element__like-counter").textContent = cardLikes;
+
+        if (isLiked) {
+            this._like.classList.remove("element__liked");
+        }
+        else {
+            this._like.classList.add("element__liked");
+        }
+    }
+
+    removeCard() {
+        this._card.remove();
     }
 
 }
