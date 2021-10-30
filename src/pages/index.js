@@ -21,8 +21,8 @@ const api = new Api({
 });
 
 const initialCardsList = new Section({
-  
-renderer: (item, userData) => {
+
+  renderer: (item, userData) => {
     initialCardsList.setItem(createCard({
       name: item.name,
       link: item.link,
@@ -31,7 +31,7 @@ renderer: (item, userData) => {
       handleDeleteClick: handleDeleteClick,
       handleLikeCard: handleLikeToogle,
       owner: false,
-      ownerId: userData,
+      ownerId: userData._id,
       cardOwnerId: item.owner._id,
       _id: item._id
     }));
@@ -111,30 +111,29 @@ const handleDeleteClick = (card, cardId) => {
   popupDeleteCard.open(card, cardId);
 };
 
-const handleLikeToogle = (id, cardElm, card) => {
-  const like = cardElm.querySelector('.element__like');
-  let isLiked = true;
+const handleLikeToogle = (id, card) => {
+  let isLiked = true
 
-
-  if (like.classList.contains('element__liked')) {
+  if (card.isLiked(isLiked)) {
     api.removeLike(id)
       .then(result => {
-        card.setLike(result.likes.length, isLiked);
+        card.setLike(result.likes.length, card.isLiked(isLiked));
       })
       .catch((err) => {
         console.log(err);
       });
   }
+
   else {
-    isLiked = false;
     api.addLike(id)
       .then(result => {
-        card.setLike(result.likes.length, isLiked);
+        card.setLike(result.likes.length, card.isLiked(isLiked));
       })
       .catch((err) => {
         console.log(err);
       });
   }
+
 }
 
 const handleFormEditProfile = (inputValues) => {
@@ -175,7 +174,8 @@ const handleFormAddCard = (inputValues) => {
         handleDeleteClick: handleDeleteClick,
         handleLikeCard: handleLikeToogle,
         owner: true,
-        ownerId: userData,
+        ownerId: userData._id,
+        cardOwnerId: cardData.owner._id,
         _id: cardData._id
       })
       )

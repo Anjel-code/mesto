@@ -11,7 +11,7 @@ export class Card {
         this._handleDeleteClick = data.handleDeleteClick;
         this._isOwner = data.owner
         this._cardOwnerId = data.cardOwnerId;
-        this._ownerId = data.ownerId._id;
+        this._ownerId = data.ownerId;
         this._Id = data._id;
     }
 
@@ -58,7 +58,7 @@ export class Card {
 
     _setEventListeners() {
 
-        this._like.addEventListener('click', () => this._handleLikeCard(this._Id, this._card, this));
+        this._like.addEventListener('click', () => this._handleLikeCard(this._Id, this));
 
         this._removeButton.addEventListener('click', () => {
             this._handleDeleteClick();
@@ -72,6 +72,15 @@ export class Card {
             this._buttonDelete = this._card.querySelector(".element__delete-button");
             this._buttonDelete.classList.add("element__delete-button_active");
             this._buttonDelete.addEventListener("click", () => { this._handleDeleteClick(this, this._Id) });
+        }
+    }
+
+    isLiked(isLiked) {
+        if (this._like.classList.contains('element__liked')) {
+            return isLiked = true;
+        }
+        else {
+            return isLiked = false;
         }
     }
 
