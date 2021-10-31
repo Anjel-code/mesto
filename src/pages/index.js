@@ -13,6 +13,8 @@ import {
 } from "../utils/constants.js"
 import { PopupWithConfirmation } from "../components/PopupWithConfirmation.js";
 
+let userId;
+
 //Classes
 
 const api = new Api({
@@ -42,6 +44,8 @@ const initialCardsList = new Section({
 
 Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([userData, cardsData]) => {
+
+    userId = userData._id
 
     profileEdit.setUserAvatar(userData.avatar);
     profileEdit.setUserInfo({
@@ -163,8 +167,8 @@ const handleFormAddCard = (inputValues) => {
   popupAddFormButton.textContent = 'Создание...'
 
 
-  Promise.all([api.getUserInfo(), api.addCard({ name: inputValues.name, link: inputValues.link })])
-    .then(([userData, cardData]) => {
+  api.addCard({ name: inputValues.name, link: inputValues.link })
+    .then((cardData) => {
 
       initialCardsList.setItem(createCard({
         name: cardData.name,
@@ -174,7 +178,7 @@ const handleFormAddCard = (inputValues) => {
         handleDeleteClick: handleDeleteClick,
         handleLikeCard: handleLikeToogle,
         owner: true,
-        ownerId: userData._id,
+        ownerId: userId,
         cardOwnerId: cardData.owner._id,
         _id: cardData._id
       })
